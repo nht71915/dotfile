@@ -82,23 +82,28 @@
 #echo
 #check_for_software exa
 #echo
-#
+#check_for_software ripgrep
+#echo
+#check_for_software bat
+#echo
+
+
 #check_default_shell
 
 
-#install_bbr
-	echo -n "Would you like to install bbr? (y/n) "
-	curl_dir=$(pwd -P)
-	old_stty_cfg=$(stty -g)
-	stty raw -echo
-	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-	stty $old_stty_cfg
-	if echo "$answer" | grep -iq "^y" ; then
-		echo
-		/bin/bash  ./bbr.sh
-	else
-	   echo -e "\nNot install bbr."
-	fi
+#enable_bbr
+#	echo -n "Would you like to enable bbr? (y/n) "
+#	curl_dir=$(pwd -P)
+#	old_stty_cfg=$(stty -g)
+#	stty raw -echo
+#	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+#	stty $old_stty_cfg
+#	if echo "$answer" | grep -iq "^y" ; then
+#		echo
+#		/bin/bash  $curl_dir/sub/bbr.sh
+#	else
+#	   echo -e "\nNot enable bbr."
+#	fi
 
 
 
@@ -116,5 +121,17 @@
 #	echo -e "\nNot backing up old dotfiles."
 #fi
 
-echo
-echo -n "$curl_dir"
+#install Oh My Zsh
+	echo -n "Would you like to install oh my zsh? (y/n) "
+	curl_dir=$(pwd -P)
+	old_stty_cfg=$(stty -g)
+	stty raw -echo
+	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+	stty $old_stty_cfg
+	if echo "$answer" | grep -iq "^y" ; then
+		echo
+		/bin/sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	else
+	   echo -e "\nNot install oh my zsh."
+	fi
+
