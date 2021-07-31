@@ -1,3 +1,5 @@
 #!/bin/bash
 
-source ./bbr.sh
+echo 'Hello'
+
+echo 'World'
